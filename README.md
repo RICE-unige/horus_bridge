@@ -38,3 +38,21 @@ HORUS Bridge is a core part of an ongoing research project. We welcome contribut
 * Suggest features
 * Submit code contributions
 -->
+
+## Project Timeline 
+
+- [ ] Robot Communication Stub:
+    - [ ] Choose a lightweight method to simulate basic robot interactions (this could even be a simple script generating mock data initially).
+    - [ ] Implement a module to receive data from this "robot".
+- [ ] WebSocket Server:
+    - [ ] Set up a core WebSocket server (ws library in Node.js, websockets in Python, etc.).
+    - [ ] Establish basic connection handling with the HORUS interface.
+- [ ] Data Relaying:
+    - [ ] Translate simplified robot data (camera images, control commands) into a format suitable for WebSocket transmission.
+    - [ ] Implement relay logic to send/receive data between the WebSocket connection and the robot communication module.
+
+
+> <div align="left"> <em> Project Sponsored by </em><a href="https://rice.dibris.unige.it/"> 
+><img src="img/rice_lab_logo.jpg" width="5%" height="5%" title="Robots and Intelligent systems for Citizens and the Environment" alt="Robots and Intelligent systems for Citizens and the Environment">
+> </a><em> and </em> <a href="https://drim.i-rim.it/en/"><img src="img/i_rim_logo_blue.png" width="8%" height="10%" title="Italian Institute of Robotics and Intelligent Machines" alt="Italian Institute of Robotics and Intelligent Machines">
+</a></div>
