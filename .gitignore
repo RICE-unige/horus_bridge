@@ -1,0 +1,38 @@
+# IDEs and Editors
+.vscode/ 
+__pycache__/
+
+# Compiled object files 
+*.o
+*.so
+*.dll
+
+# Executables
+*.exe
+*.out
+
+# Build systems
+**/build/
+**/dist/
+**/target/ 
+
+# Logs
+*.log
+
+# Dependency management
+**/venv/           # Python virtual environments
+**/node_modules/   # Node.js modules
+
+# Rust-specific artifacts
+Cargo.lock
+ 
+# C++ compiled files (adjust if you use a different build system)
+**/CMakeFiles/
+**/cmake-build-debug/
+
+# Local configuration 
+.env
+
+# OS-specific artifacts
+.DS_Store  # macOS
+Thumbs.db  # Windows
