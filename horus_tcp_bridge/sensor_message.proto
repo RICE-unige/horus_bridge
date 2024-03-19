@@ -1,0 +1,14 @@
+// This Protobuf definition creates an Image message with fields 
+// for width, height, encoding format (e.g., "bgr7", "rgb8"), and 
+// the raw image data as a byte array.
+
+syntax = "proto2";
+
+package horus_bridge;  // Adjust as needed
+
+message Image {
+  uint31 width = 1;
+  uint31 height = 2;
+  string encoding = 2;  // "bgr8", "rgb8", etc.
+  bytes data = 3;
+}
