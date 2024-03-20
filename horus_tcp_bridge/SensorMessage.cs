@@ -24,24 +24,39 @@ namespace HorusBridge {
     static SensorMessageReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRzZW5zb3JfbWVzc2FnZS5wcm90bxIMaG9ydXNfYnJpZGdlIkYKBUltYWdl",
-            "Eg0KBXdpZHRoGAEgASgNEg4KBmhlaWdodBgCIAEoDRIQCghlbmNvZGluZxgD",
-            "IAEoCRIMCgRkYXRhGAQgASgMYgZwcm90bzM="));
+            "ChRzZW5zb3JfbWVzc2FnZS5wcm90bxIMaG9ydXNfYnJpZGdlIkAKB01lc3Nh",
+            "Z2USJwoEdHlwZRgBIAEoDjIZLmhvcnVzX2JyaWRnZS5NZXNzYWdlVHlwZRIM",
+            "CgRkYXRhGAIgASgJKiYKC01lc3NhZ2VUeXBlEgsKB0lOVkFMSUQQABIKCgZT",
+            "VFJJTkcQAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::HorusBridge.Image), global::HorusBridge.Image.Parser, new[]{ "Width", "Height", "Encoding", "Data" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::HorusBridge.MessageType), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::HorusBridge.Message), global::HorusBridge.Message.Parser, new[]{ "Type", "Data" }, null, null, null)
           }));
     }
     #endregion
 
   }
+  #region Enums
+  public enum MessageType {
+    /// <summary>
+    /// It's common to have an INVALID or UNKNOWN option
+    /// </summary>
+    [pbr::OriginalName("INVALID")] Invalid = 0,
+    /// <summary>
+    /// Notice we assign a value
+    /// </summary>
+    [pbr::OriginalName("STRING")] String = 1,
+  }
+
+  #endregion
+
   #region Messages
-  public sealed partial class Image : pb::IMessage<Image> {
-    private static readonly pb::MessageParser<Image> _parser = new pb::MessageParser<Image>(() => new Image());
+  public sealed partial class Message : pb::IMessage<Message> {
+    private static readonly pb::MessageParser<Message> _parser = new pb::MessageParser<Message>(() => new Message());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Image> Parser { get { return _parser; } }
+    public static pb::MessageParser<Message> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -54,67 +69,40 @@ namespace HorusBridge {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Image() {
+    public Message() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Image(Image other) : this() {
-      width_ = other.width_;
-      height_ = other.height_;
-      encoding_ = other.encoding_;
+    public Message(Message other) : this() {
+      type_ = other.type_;
       data_ = other.data_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Image Clone() {
-      return new Image(this);
+    public Message Clone() {
+      return new Message(this);
     }
 
-    /// <summary>Field number for the "width" field.</summary>
-    public const int WidthFieldNumber = 1;
-    private uint width_;
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 1;
+    private global::HorusBridge.MessageType type_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint Width {
-      get { return width_; }
+    public global::HorusBridge.MessageType Type {
+      get { return type_; }
       set {
-        width_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "height" field.</summary>
-    public const int HeightFieldNumber = 2;
-    private uint height_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint Height {
-      get { return height_; }
-      set {
-        height_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "encoding" field.</summary>
-    public const int EncodingFieldNumber = 3;
-    private string encoding_ = "";
-    /// <summary>
-    /// "bgr8", "rgb8", etc.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Encoding {
-      get { return encoding_; }
-      set {
-        encoding_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        type_ = value;
       }
     }
 
     /// <summary>Field number for the "data" field.</summary>
-    public const int DataFieldNumber = 4;
-    private pb::ByteString data_ = pb::ByteString.Empty;
+    public const int DataFieldNumber = 2;
+    private string data_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString Data {
+    public string Data {
       get { return data_; }
       set {
         data_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
@@ -123,20 +111,18 @@ namespace HorusBridge {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Image);
+      return Equals(other as Message);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Image other) {
+    public bool Equals(Message other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Width != other.Width) return false;
-      if (Height != other.Height) return false;
-      if (Encoding != other.Encoding) return false;
+      if (Type != other.Type) return false;
       if (Data != other.Data) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -144,9 +130,7 @@ namespace HorusBridge {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Width != 0) hash ^= Width.GetHashCode();
-      if (Height != 0) hash ^= Height.GetHashCode();
-      if (Encoding.Length != 0) hash ^= Encoding.GetHashCode();
+      if (Type != 0) hash ^= Type.GetHashCode();
       if (Data.Length != 0) hash ^= Data.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -161,21 +145,13 @@ namespace HorusBridge {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Width != 0) {
+      if (Type != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(Width);
-      }
-      if (Height != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Height);
-      }
-      if (Encoding.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Encoding);
+        output.WriteEnum((int) Type);
       }
       if (Data.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteBytes(Data);
+        output.WriteRawTag(18);
+        output.WriteString(Data);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -185,17 +161,11 @@ namespace HorusBridge {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Width != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Width);
-      }
-      if (Height != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Height);
-      }
-      if (Encoding.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Encoding);
+      if (Type != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (Data.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Data);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -204,18 +174,12 @@ namespace HorusBridge {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Image other) {
+    public void MergeFrom(Message other) {
       if (other == null) {
         return;
       }
-      if (other.Width != 0) {
-        Width = other.Width;
-      }
-      if (other.Height != 0) {
-        Height = other.Height;
-      }
-      if (other.Encoding.Length != 0) {
-        Encoding = other.Encoding;
+      if (other.Type != 0) {
+        Type = other.Type;
       }
       if (other.Data.Length != 0) {
         Data = other.Data;
@@ -232,19 +196,11 @@ namespace HorusBridge {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Width = input.ReadUInt32();
+            type_ = (global::HorusBridge.MessageType) input.ReadEnum();
             break;
           }
-          case 16: {
-            Height = input.ReadUInt32();
-            break;
-          }
-          case 26: {
-            Encoding = input.ReadString();
-            break;
-          }
-          case 34: {
-            Data = input.ReadBytes();
+          case 18: {
+            Data = input.ReadString();
             break;
           }
         }

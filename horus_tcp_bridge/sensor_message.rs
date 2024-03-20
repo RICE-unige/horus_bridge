@@ -25,67 +25,53 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_4_0;
 
-// @@protoc_insertion_point(message:horus_bridge.Image)
+// @@protoc_insertion_point(message:horus_bridge.Message)
 #[derive(PartialEq,Clone,Default,Debug)]
-pub struct Image {
+pub struct Message {
     // message fields
-    // @@protoc_insertion_point(field:horus_bridge.Image.width)
-    pub width: u32,
-    // @@protoc_insertion_point(field:horus_bridge.Image.height)
-    pub height: u32,
-    // @@protoc_insertion_point(field:horus_bridge.Image.encoding)
-    pub encoding: ::std::string::String,
-    // @@protoc_insertion_point(field:horus_bridge.Image.data)
-    pub data: ::std::vec::Vec<u8>,
+    // @@protoc_insertion_point(field:horus_bridge.Message.type)
+    pub type_: ::protobuf::EnumOrUnknown<MessageType>,
+    // @@protoc_insertion_point(field:horus_bridge.Message.data)
+    pub data: ::std::string::String,
     // special fields
-    // @@protoc_insertion_point(special_field:horus_bridge.Image.special_fields)
+    // @@protoc_insertion_point(special_field:horus_bridge.Message.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a Image {
-    fn default() -> &'a Image {
-        <Image as ::protobuf::Message>::default_instance()
+impl<'a> ::std::default::Default for &'a Message {
+    fn default() -> &'a Message {
+        <Message as ::protobuf::Message>::default_instance()
     }
 }
 
-impl Image {
-    pub fn new() -> Image {
+impl Message {
+    pub fn new() -> Message {
         ::std::default::Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(4);
+        let mut fields = ::std::vec::Vec::with_capacity(2);
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "width",
-            |m: &Image| { &m.width },
-            |m: &mut Image| { &mut m.width },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "height",
-            |m: &Image| { &m.height },
-            |m: &mut Image| { &mut m.height },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "encoding",
-            |m: &Image| { &m.encoding },
-            |m: &mut Image| { &mut m.encoding },
+            "type",
+            |m: &Message| { &m.type_ },
+            |m: &mut Message| { &mut m.type_ },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "data",
-            |m: &Image| { &m.data },
-            |m: &mut Image| { &mut m.data },
+            |m: &Message| { &m.data },
+            |m: &mut Message| { &mut m.data },
         ));
-        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<Image>(
-            "Image",
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<Message>(
+            "Message",
             fields,
             oneofs,
         )
     }
 }
 
-impl ::protobuf::Message for Image {
-    const NAME: &'static str = "Image";
+impl ::protobuf::Message for Message {
+    const NAME: &'static str = "Message";
 
     fn is_initialized(&self) -> bool {
         true
@@ -95,16 +81,10 @@ impl ::protobuf::Message for Image {
         while let Some(tag) = is.read_raw_tag_or_eof()? {
             match tag {
                 8 => {
-                    self.width = is.read_uint32()?;
+                    self.type_ = is.read_enum_or_unknown()?;
                 },
-                16 => {
-                    self.height = is.read_uint32()?;
-                },
-                26 => {
-                    self.encoding = is.read_string()?;
-                },
-                34 => {
-                    self.data = is.read_bytes()?;
+                18 => {
+                    self.data = is.read_string()?;
                 },
                 tag => {
                     ::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -118,17 +98,11 @@ impl ::protobuf::Message for Image {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u64 {
         let mut my_size = 0;
-        if self.width != 0 {
-            my_size += ::protobuf::rt::uint32_size(1, self.width);
-        }
-        if self.height != 0 {
-            my_size += ::protobuf::rt::uint32_size(2, self.height);
-        }
-        if !self.encoding.is_empty() {
-            my_size += ::protobuf::rt::string_size(3, &self.encoding);
+        if self.type_ != ::protobuf::EnumOrUnknown::new(MessageType::INVALID) {
+            my_size += ::protobuf::rt::int32_size(1, self.type_.value());
         }
         if !self.data.is_empty() {
-            my_size += ::protobuf::rt::bytes_size(4, &self.data);
+            my_size += ::protobuf::rt::string_size(2, &self.data);
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
@@ -136,17 +110,11 @@ impl ::protobuf::Message for Image {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::Result<()> {
-        if self.width != 0 {
-            os.write_uint32(1, self.width)?;
-        }
-        if self.height != 0 {
-            os.write_uint32(2, self.height)?;
-        }
-        if !self.encoding.is_empty() {
-            os.write_string(3, &self.encoding)?;
+        if self.type_ != ::protobuf::EnumOrUnknown::new(MessageType::INVALID) {
+            os.write_enum(1, ::protobuf::EnumOrUnknown::value(&self.type_))?;
         }
         if !self.data.is_empty() {
-            os.write_bytes(4, &self.data)?;
+            os.write_string(2, &self.data)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -160,73 +128,126 @@ impl ::protobuf::Message for Image {
         &mut self.special_fields
     }
 
-    fn new() -> Image {
-        Image::new()
+    fn new() -> Message {
+        Message::new()
     }
 
     fn clear(&mut self) {
-        self.width = 0;
-        self.height = 0;
-        self.encoding.clear();
+        self.type_ = ::protobuf::EnumOrUnknown::new(MessageType::INVALID);
         self.data.clear();
         self.special_fields.clear();
     }
 
-    fn default_instance() -> &'static Image {
-        static instance: Image = Image {
-            width: 0,
-            height: 0,
-            encoding: ::std::string::String::new(),
-            data: ::std::vec::Vec::new(),
+    fn default_instance() -> &'static Message {
+        static instance: Message = Message {
+            type_: ::protobuf::EnumOrUnknown::from_i32(0),
+            data: ::std::string::String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
     }
 }
 
-impl ::protobuf::MessageFull for Image {
+impl ::protobuf::MessageFull for Message {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("Image").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("Message").unwrap()).clone()
     }
 }
 
-impl ::std::fmt::Display for Image {
+impl ::std::fmt::Display for Message {
     fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
 
-impl ::protobuf::reflect::ProtobufValue for Image {
+impl ::protobuf::reflect::ProtobufValue for Message {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
+#[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+// @@protoc_insertion_point(enum:horus_bridge.MessageType)
+pub enum MessageType {
+    // @@protoc_insertion_point(enum_value:horus_bridge.MessageType.INVALID)
+    INVALID = 0,
+    // @@protoc_insertion_point(enum_value:horus_bridge.MessageType.STRING)
+    STRING = 1,
+}
+
+impl ::protobuf::Enum for MessageType {
+    const NAME: &'static str = "MessageType";
+
+    fn value(&self) -> i32 {
+        *self as i32
+    }
+
+    fn from_i32(value: i32) -> ::std::option::Option<MessageType> {
+        match value {
+            0 => ::std::option::Option::Some(MessageType::INVALID),
+            1 => ::std::option::Option::Some(MessageType::STRING),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    fn from_str(str: &str) -> ::std::option::Option<MessageType> {
+        match str {
+            "INVALID" => ::std::option::Option::Some(MessageType::INVALID),
+            "STRING" => ::std::option::Option::Some(MessageType::STRING),
+            _ => ::std::option::Option::None
+        }
+    }
+
+    const VALUES: &'static [MessageType] = &[
+        MessageType::INVALID,
+        MessageType::STRING,
+    ];
+}
+
+impl ::protobuf::EnumFull for MessageType {
+    fn enum_descriptor() -> ::protobuf::reflect::EnumDescriptor {
+        static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::EnumDescriptor> = ::protobuf::rt::Lazy::new();
+        descriptor.get(|| file_descriptor().enum_by_package_relative_name("MessageType").unwrap()).clone()
+    }
+
+    fn descriptor(&self) -> ::protobuf::reflect::EnumValueDescriptor {
+        let index = *self as usize;
+        Self::enum_descriptor().value_by_index(index)
+    }
+}
+
+impl ::std::default::Default for MessageType {
+    fn default() -> Self {
+        MessageType::INVALID
+    }
+}
+
+impl MessageType {
+    fn generated_enum_descriptor_data() -> ::protobuf::reflect::GeneratedEnumDescriptorData {
+        ::protobuf::reflect::GeneratedEnumDescriptorData::new::<MessageType>("MessageType")
+    }
+}
+
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x14sensor_message.proto\x12\x0chorus_bridge\"e\n\x05Image\x12\x14\n\
-    \x05width\x18\x01\x20\x01(\rR\x05width\x12\x16\n\x06height\x18\x02\x20\
-    \x01(\rR\x06height\x12\x1a\n\x08encoding\x18\x03\x20\x01(\tR\x08encoding\
-    \x12\x12\n\x04data\x18\x04\x20\x01(\x0cR\x04dataJ\xa2\x04\n\x06\x12\x04\
-    \x04\0\r\x01\n\xb1\x01\n\x01\x0c\x12\x03\x04\0\x122\xa6\x01\x20This\x20P\
-    rotobuf\x20definition\x20creates\x20an\x20Image\x20message\x20with\x20fi\
-    elds\x20\n\x20for\x20width,\x20height,\x20encoding\x20format\x20(e.g.,\
-    \x20\"bgr8\",\x20\"rgb8\"),\x20and\x20\n\x20the\x20raw\x20image\x20data\
-    \x20as\x20a\x20byte\x20array.\n\n\x1c\n\x01\x02\x12\x03\x06\x08\x14\"\
-    \x12\x20Adjust\x20as\x20needed\n\n\n\n\x02\x04\0\x12\x04\x08\0\r\x01\n\n\
-    \n\x03\x04\0\x01\x12\x03\x08\x08\r\n\x0b\n\x04\x04\0\x02\0\x12\x03\t\x02\
-    \x13\n\r\n\x05\x04\0\x02\0\x04\x12\x04\t\x02\x08\x0f\n\x0c\n\x05\x04\0\
-    \x02\0\x05\x12\x03\t\x02\x08\n\x0c\n\x05\x04\0\x02\0\x01\x12\x03\t\t\x0e\
-    \n\x0c\n\x05\x04\0\x02\0\x03\x12\x03\t\x11\x12\n\x0b\n\x04\x04\0\x02\x01\
-    \x12\x03\n\x02\x14\n\r\n\x05\x04\0\x02\x01\x04\x12\x04\n\x02\t\x13\n\x0c\
-    \n\x05\x04\0\x02\x01\x05\x12\x03\n\x02\x08\n\x0c\n\x05\x04\0\x02\x01\x01\
-    \x12\x03\n\t\x0f\n\x0c\n\x05\x04\0\x02\x01\x03\x12\x03\n\x12\x13\n#\n\
-    \x04\x04\0\x02\x02\x12\x03\x0b\x02\x16\"\x16\x20\"bgr8\",\x20\"rgb8\",\
-    \x20etc.\n\n\r\n\x05\x04\0\x02\x02\x04\x12\x04\x0b\x02\n\x14\n\x0c\n\x05\
-    \x04\0\x02\x02\x05\x12\x03\x0b\x02\x08\n\x0c\n\x05\x04\0\x02\x02\x01\x12\
-    \x03\x0b\t\x11\n\x0c\n\x05\x04\0\x02\x02\x03\x12\x03\x0b\x14\x15\n\x0b\n\
-    \x04\x04\0\x02\x03\x12\x03\x0c\x02\x11\n\r\n\x05\x04\0\x02\x03\x04\x12\
-    \x04\x0c\x02\x0b\x16\n\x0c\n\x05\x04\0\x02\x03\x05\x12\x03\x0c\x02\x07\n\
-    \x0c\n\x05\x04\0\x02\x03\x01\x12\x03\x0c\x08\x0c\n\x0c\n\x05\x04\0\x02\
-    \x03\x03\x12\x03\x0c\x0f\x10b\x06proto3\
+    \n\x14sensor_message.proto\x12\x0chorus_bridge\"L\n\x07Message\x12-\n\
+    \x04type\x18\x01\x20\x01(\x0e2\x19.horus_bridge.MessageTypeR\x04type\x12\
+    \x12\n\x04data\x18\x02\x20\x01(\tR\x04data*&\n\x0bMessageType\x12\x0b\n\
+    \x07INVALID\x10\0\x12\n\n\x06STRING\x10\x01J\xfa\x02\n\x06\x12\x04\0\0\r\
+    \x01\n\x08\n\x01\x0c\x12\x03\0\0\x12\n\x08\n\x01\x02\x12\x03\x02\x08\x14\
+    \n\n\n\x02\x05\0\x12\x04\x04\0\x08\x01\n\n\n\x03\x05\0\x01\x12\x03\x04\
+    \x05\x10\n?\n\x04\x05\0\x02\0\x12\x03\x05\x02\x0e\"2\x20It's\x20common\
+    \x20to\x20have\x20an\x20INVALID\x20or\x20UNKNOWN\x20option\n\n\x0c\n\x05\
+    \x05\0\x02\0\x01\x12\x03\x05\x02\t\n\x0c\n\x05\x05\0\x02\0\x02\x12\x03\
+    \x05\x0c\r\n'\n\x04\x05\0\x02\x01\x12\x03\x06\x02\r\"\x1a\x20Notice\x20w\
+    e\x20assign\x20a\x20value\n\n\x0c\n\x05\x05\0\x02\x01\x01\x12\x03\x06\
+    \x02\x08\n\x0c\n\x05\x05\0\x02\x01\x02\x12\x03\x06\x0b\x0c\n\n\n\x02\x04\
+    \0\x12\x04\n\0\r\x01\n\n\n\x03\x04\0\x01\x12\x03\n\x08\x0f\n\x0b\n\x04\
+    \x04\0\x02\0\x12\x03\x0b\x02\x17\n\r\n\x05\x04\0\x02\0\x04\x12\x04\x0b\
+    \x02\n\x11\n\x0c\n\x05\x04\0\x02\0\x06\x12\x03\x0b\x02\r\n\x0c\n\x05\x04\
+    \0\x02\0\x01\x12\x03\x0b\x0e\x12\n\x0c\n\x05\x04\0\x02\0\x03\x12\x03\x0b\
+    \x15\x16\n\x0b\n\x04\x04\0\x02\x01\x12\x03\x0c\x02\x12\n\r\n\x05\x04\0\
+    \x02\x01\x04\x12\x04\x0c\x02\x0b\x17\n\x0c\n\x05\x04\0\x02\x01\x05\x12\
+    \x03\x0c\x02\x08\n\x0c\n\x05\x04\0\x02\x01\x01\x12\x03\x0c\t\r\n\x0c\n\
+    \x05\x04\0\x02\x01\x03\x12\x03\x0c\x10\x11b\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file
@@ -245,8 +266,9 @@ pub fn file_descriptor() -> &'static ::protobuf::reflect::FileDescriptor {
         let generated_file_descriptor = generated_file_descriptor_lazy.get(|| {
             let mut deps = ::std::vec::Vec::with_capacity(0);
             let mut messages = ::std::vec::Vec::with_capacity(1);
-            messages.push(Image::generated_message_descriptor_data());
-            let mut enums = ::std::vec::Vec::with_capacity(0);
+            messages.push(Message::generated_message_descriptor_data());
+            let mut enums = ::std::vec::Vec::with_capacity(1);
+            enums.push(MessageType::generated_enum_descriptor_data());
             ::protobuf::reflect::GeneratedFileDescriptor::new_generated(
                 file_descriptor_proto(),
                 deps,
