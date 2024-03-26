@@ -1,9 +1,1 @@
-[submodule "horus_tcp_bridge"]
-	path = horus_tcp_bridge
-	url = https://github.com/omotoye/horus_tcp_bridge.git
-[submodule "horus_ros1_bridge"]
-	path = horus_ros1_bridge
-	url = https://github.com/omotoye/horus_ros1_bridge.git
-[submodule "horus_ros2_bridge"]
-	path = horus_ros2_bridge
-	url = https://github.com/omotoye/horus_ros2_bridge.git
+
