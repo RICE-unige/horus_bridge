@@ -21,32 +21,14 @@ HORUS Bridge is the essential desktop component of the HORUS mixed reality robot
 * **Connecting with HORUS:**
     1. [Explain the process within the HORUS mixed reality interface]
 
-## Project Structure (Outline)
+## Project Timeline _(Road to version 0.1.0)_
 
-* **src:** Contains the core source code of the HORUS Bridge server.
-* **config:** Configuration files for network settings and robot-specific parameters.
-* **docs:** Additional documentation and usage guides.
-
-<!--
-## Get Involved
-
-HORUS Bridge is a core part of an ongoing research project. We welcome contributions, bug reports, and feature suggestions.   
-
-**Please feel free to:**
-
-* Raise issues
-* Suggest features
-* Submit code contributions
--->
-
-## Project Timeline 
-
-- [ ] Robot Communication Stub:
-    - [ ] Choose a lightweight method to simulate basic robot interactions (this could even be a simple script generating mock data initially).
-    - [ ] Implement a module to receive data from this "robot".
-- [ ] WebSocket Server:
-    - [ ] Set up a core WebSocket server (ws library in Node.js, websockets in Python, etc.).
-    - [ ] Establish basic connection handling with the HORUS interface.
+- [x] Robot Communication Stub:
+    - [x] Choose a lightweight method to simulate basic robot interactions (this could even be a simple script generating mock data initially).
+    - [x] Implement a module to receive data from this "robot".
+- [x] WebSocket Server:
+    - [x] Set up a core WebSocket server (ws library in Node.js, websockets in Python, etc.).
+    - [x] Establish basic connection handling with the HORUS interface.
 - [ ] Data Relaying:
     - [ ] Translate simplified robot data (camera images, control commands) into a format suitable for WebSocket transmission.
     - [ ] Implement relay logic to send/receive data between the WebSocket connection and the robot communication module.
