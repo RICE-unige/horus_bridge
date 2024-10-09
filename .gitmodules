@@ -1,1 +1,4 @@
 
+[submodule "ROS-TCP-Endpoint"]
+	path = ROS-TCP-Endpoint
+	url = https://github.com/RICE-unige/ROS-TCP-Endpoint.git
