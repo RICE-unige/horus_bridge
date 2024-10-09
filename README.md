@@ -12,14 +12,7 @@ HORUS Bridge is the essential desktop component of the HORUS mixed reality robot
 * **API for HORUS Interface:** Provides an API endpoint for the main HORUS interface to send control commands and receive robot data.
 
 ## Installation and Usage
-* **Prerequisites:**
-   * [List any software dependencies, like robot-specific libraries]
-* **Installation Guide:**
-    1. [Step-by-step instructions on downloading and installing]
-* **Running the Bridge:**
-    1. [How to initiate the server, including potential configuration]
-* **Connecting with HORUS:**
-    1. [Explain the process within the HORUS mixed reality interface]
+
 
 ## Project Timeline _(Road to version 0.1.0)_
 
