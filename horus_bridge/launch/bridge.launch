@@ -1,0 +1,7 @@
+<launch>
+  <!-- Launch the ros_tcp_endpoint launch file -->
+  <include file="$(find ros_tcp_endpoint)/launch/endpoint.launch" />
+  
+  <!-- Add your other nodes or parameters here -->
+  
+</launch>
